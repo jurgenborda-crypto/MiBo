@@ -5,6 +5,9 @@
   <title>MiBo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#060a14">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="MiBo">
   
   <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
   <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
@@ -22,36 +25,48 @@
       height: 100vh;
       margin: 0;
       text-align: center;
-      padding: 20px;
+      padding: 24px;
+      box-sizing: border-box;
     }
+    .logo-container {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #0284c7, #06b6d4, #10b981);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+    }
+    h1 { font-size: 1.8rem; font-weight: 800; margin: 0 0 8px 0; }
+    h1 span { color: #06b6d4; }
+    p { color: #94a3b8; font-size: 0.95rem; margin-bottom: 30px; }
     .btn-ingresar {
       background: #0284c7;
       color: #ffffff;
-      padding: 14px 28px;
+      padding: 16px 32px;
       border-radius: 99px;
-      font-weight: bold;
+      font-weight: 700;
       text-decoration: none;
       font-size: 1rem;
-      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
-      margin-top: 20px;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.4);
+      width: 100%;
+      max-width: 280px;
+      display: block;
+      box-sizing: border-box;
     }
   </style>
-  
-  <script>
-    // URL de tu Web App de Google Apps Script
-    var urlApp = "https://script.google.com/macros/s/AKfycbwlbYNZjF4Wm45EnSBORd5r45gclLT5oxjibw68qH4dNd6eHb_HzMKTtzrI1y1nKhQ5/exec";
-
-    // Si se abrió desde la pantalla de inicio del iPhone, redirige de inmediato
-    if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) {
-      window.location.replace(urlApp);
-    }
-  </script>
 </head>
 <body>
-  <div style="font-size: 2rem; font-weight: 900; margin-bottom: 8px;">Mi<span>Bo</span></div>
-  <p style="color: #94a3b8; font-size: 0.9rem;">Tu espacio de finanzas privadas está listo.</p>
+  <div class="logo-container">Mi</div>
+  <h1>Mi<span>Bo</span></h1>
+  <p>Finanzas Privadas y Patrimonio</p>
   
-  <!-- Botón manual por si Safari bloquea la redirección automática -->
-  <a href="https://script.google.com/macros/s/AKfycbwlbYNZjF4Wm45EnSBORd5r45gclLT5oxjibw68qH4dNd6eHb_HzMKTtzrI1y1nKhQ5/exec" class="btn-ingresar">Abrir MiBo</a>
+  <!-- Reemplaza la URL de abajo por tu enlace exacto que termina en /exec -->
+  <a href="https://script.google.com/macros/s/AKfycbwlbYNZjF4Wm45EnSBORd5r45gclLT5oxjibw68qH4dNd6eHb_HzMKTtzrI1y1nKhQ5/exec" class="btn-ingresar">Ingresar a MiBo</a>
 </body>
 </html>
