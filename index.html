@@ -6,20 +6,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#060a14">
   
- <!-- Iconos locales -->
   <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
   <link rel="icon" type="image/png" sizes="192x192" href="logo.png">
-  
-  <!-- Enlace al Manifest -->
   <link rel="manifest" href="manifest.json">
   
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #060a14; }
-    iframe { width: 100%; height: 100%; border: none; }
+    body {
+      background-color: #060a14;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      padding: 20px;
+    }
+    .btn-ingresar {
+      background: #0284c7;
+      color: #ffffff;
+      padding: 14px 28px;
+      border-radius: 99px;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4);
+      margin-top: 20px;
+    }
   </style>
+  
+  <script>
+    // URL de tu Web App de Google Apps Script
+    var urlApp = "https://script.google.com/macros/s/AKfycbwlbYNZjF4Wm45EnSBORd5r45gclLT5oxjibw68qH4dNd6eHb_HzMKTtzrI1y1nKhQ5/exec";
+
+    // Si se abrió desde la pantalla de inicio del iPhone, redirige de inmediato
+    if (window.navigator.standalone === true || window.matchMedia('(display-mode: standalone)').matches) {
+      window.location.replace(urlApp);
+    }
+  </script>
 </head>
 <body>
-  <!-- Tu enlace de Google Apps Script -->
-  <iframe src="https://script.google.com/macros/s/AKfycbwlbYNZjF4Wm45EnSBORd5r45gclLT5oxjibw68qH4dNd6eHb_HzMKTtzrI1y1nKhQ5/exec" allowfullscreen></iframe>
+  <div style="font-size: 2rem; font-weight: 900; margin-bottom: 8px;">Mi<span>Bo</span></div>
+  <p style="color: #94a3b8; font-size: 0.9rem;">Tu espacio de finanzas privadas está listo.</p>
+  
+  <!-- Botón manual por si Safari bloquea la redirección automática -->
+  <a href="https://script.google.com/macros/s/AKfycbwlbYNZjF4Wm45EnSBORd5r45gclLT5oxjibw68qH4dNd6eHb_HzMKTtzrI1y1nKhQ5/exec" class="btn-ingresar">Abrir MiBo</a>
 </body>
 </html>
