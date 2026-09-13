@@ -1,0 +1,21 @@
+{
+  "name": "MiBo Finanzas",
+  "short_name": "MiBo",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#060a14",
+  "theme_color": "#060a14",
+  "description": "App de Finanzas Privadas",
+  "icons": [
+    {
+      "src": "https://i.postimg.cc/fyH9ksrs/Mi-Bo-Icon-Grad.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://i.postimg.cc/fyH9ksrs/Mi-Bo-Icon-Grad.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
