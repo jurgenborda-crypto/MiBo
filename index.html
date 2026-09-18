@@ -5,28 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MiBo</title>
   <link rel="manifest" href="manifest.json">
+  <!-- Sincronizado con el modo oscuro de tu app -->
   <meta name="theme-color" content="#060a14">
   <link rel="apple-touch-icon" href="icon-192.png">
   <style>
-    body, html { 
-      margin: 0; 
-      padding: 0; 
-      height: 100%; 
-      overflow: hidden; 
-      background-color: #060a14; 
-    }
-    iframe { 
-      width: 100%; 
-      height: 100%; 
-      border: none; 
-    }
+    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #060a14; }
+    iframe { width: 100%; height: 100%; border: none; }
   </style>
 </head>
 <body>
-  <!-- ASEGÚRATE DE QUE ESTA URL SEA EXACTAMENTE LA DE TU GOOGLE APPS SCRIPT -->
-  <iframe src="https://script.google.com/macros/s/AKfycbw1hEiNXWueZ2O79IkRkjy2jrmDY4cNcPlidOD-cjAYB2vN8N62j3qJIHi6kFhvCiKF/exec" allow="clipboard-write; clipboard-read; cookies"></iframe>
+  <!-- REEMPLAZA ESTA URL POR LA DE TU GOOGLE APPS SCRIPT -->
+  <iframe src="https://script.google.com/macros/s/AKfycbw1hEiNXWueZ2O79IkRkjy2jrmDY4cNcPlidOD-cjAYB2vN8N62j3qJIHi6kFhvCiKF/exec" allow="clipboard-write; clipboard-read;"></iframe>
 
   <script>
+    // Registra el Service Worker para permitir instalación en el celular
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js');
