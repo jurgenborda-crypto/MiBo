@@ -8,51 +8,35 @@
   <meta name="theme-color" content="#060a14">
   <link rel="apple-touch-icon" href="icon-192.png">
   <style>
-    body {
-      background-color: #060a14;
-      color: #f8fafc;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
+    body, html { 
+      margin: 0; 
+      padding: 0; 
+      height: 100%; 
+      overflow: hidden; 
+      background-color: #060a14; 
     }
-    .btn-app {
-      background: #0284c7;
-      color: #fff;
-      padding: 14px 28px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 1rem;
-      margin-top: 20px;
-      box-shadow: 0 4px 15px rgba(2,132,199,0.4);
-      display: inline-block;
+    /* Contenedor que recorta la parte superior donde Google coloca el banner */
+    .app-container {
+      position: absolute;
+      top: -50px; /* Oculta los ~50px del banner de Google fuera de la pantalla */
+      left: 0;
+      width: 100%;
+      height: calc(100% + 50px);
+    }
+    iframe { 
+      width: 100%; 
+      height: 100%; 
+      border: none; 
     }
   </style>
 </head>
 <body>
-  <div style="max-width: 320px;">
-    <h2>MiBo Finanzas</h2>
-    <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.4; margin-top: 8px;">
-      Haz clic en el botón para abrir tu aplicación con acceso directo a tu cuenta de Google:
-    </p>
+  <div class="app-container">
     <!-- REEMPLAZA ESTA URL POR LA DE TU GOOGLE APPS SCRIPT -->
-    <a href="https://script.google.com/macros/s/AKfycbw1hEiNXWueZ2O79IkRkjy2jrmDY4cNcPlidOD-cjAYB2vN8N62j3qJIHi6kFhvCiKF/exec" class="btn-app">
-      🚀 Abrir MiBo
-    </a>
+    <iframe src="https://script.google.com/macros/s/TU_ID_AQUI/exec" allow="clipboard-write; clipboard-read; cookies"></iframe>
   </div>
 
   <script>
-    // Redirección automática si ya está instalado en el iPhone como PWA (Standalone)
-    if (window.navigator.standalone === true) {
-      window.location.replace("https://script.google.com/macros/s/AKfycbw1hEiNXWueZ2O79IkRkjy2jrmDY4cNcPlidOD-cjAYB2vN8N62j3qJIHi6kFhvCiKF/exec");
-    }
-
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js');
