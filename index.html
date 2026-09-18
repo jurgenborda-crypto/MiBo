@@ -8,69 +8,51 @@
   <meta name="theme-color" content="#060a14">
   <link rel="apple-touch-icon" href="icon-192.png">
   <style>
-    body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background-color: #060a14; }
-    iframe { width: 100%; height: 100%; border: none; }
-    
-    /* Pantalla de respaldo si iOS bloquea el iframe */
-    #authFallback {
-      display: none;
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: #060a14;
-      color: #fff;
+    body {
+      background-color: #060a14;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
+      height: 100vh;
+      margin: 0;
       padding: 20px;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-      z-index: 999;
+      text-align: center;
     }
-    .btn-login {
+    .btn-app {
       background: #0284c7;
       color: #fff;
-      padding: 12px 24px;
-      border-radius: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1rem;
       margin-top: 20px;
       box-shadow: 0 4px 15px rgba(2,132,199,0.4);
+      display: inline-block;
     }
   </style>
 </head>
 <body>
-  <!-- REEMPLAZA ESTA URL POR LA DE TU GOOGLE APPS SCRIPT -->
-  <iframe id="miboFrame" src="https://script.google.com/macros/s/AKfycbw1hEiNXWueZ2O79IkRkjy2jrmDY4cNcPlidOD-cjAYB2vN8N62j3qJIHi6kFhvCiKF/exec" allow="clipboard-write; clipboard-read; cookies"></iframe>
-
-  <!-- Botón de emergencia para iPhones con restricciones estrictas -->
-  <div id="authFallback">
-    <h2>Inicio de Sesión Requerido</h2>
-    <p style="color: #94a3b8; font-size: 0.9rem; max-width: 300px; margin-top: 8px;">
-      iOS requiere que inicies sesión directamente en Google para autorizar tu cuenta en esta PWA.
+  <div style="max-width: 320px;">
+    <h2>MiBo Finanzas</h2>
+    <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.4; margin-top: 8px;">
+      Haz clic en el botón para abrir tu aplicación con acceso directo a tu cuenta de Google:
     </p>
-    <a href="https://script.google.com/macros/s/AKfycbw1hEiNXWueZ2O79IkRkjy2jrmDY4cNcPlidOD-cjAYB2vN8N62j3qJIHi6kFhvCiKF/exec" target="_blank" class="btn-login">
-      🔑 Iniciar Sesión en Google
+    <!-- REEMPLAZA ESTA URL POR LA DE TU GOOGLE APPS SCRIPT -->
+    <a href="https://script.google.com/macros/s/AKfycbw1hEiNXWueZ2O79IkRkjy2jrmDY4cNcPlidOD-cjAYB2vN8N62j3qJIHi6kFhvCiKF/exec" class="btn-app">
+      🚀 Abrir MiBo
     </a>
   </div>
 
   <script>
-    // Detección de error 401 o bloqueo de cookies en el iframe
-    const iframe = document.getElementById('miboFrame');
-    
-    // Si pasados 3 segundos el iframe da problemas de carga o redirecciona mal
-    setTimeout(() => {
-      try {
-        // Intentamos verificar si cargó la página de error de Google
-        if (iframe.contentWindow.location.href.includes('ServiceLogin') || iframe.contentWindow.location.href.includes('accounts.google.com')) {
-          document.getElementById('authFallback').style.display = 'flex';
-        }
-      } catch (e) {
-        // Por seguridad de CORS, si el navegador bloquea la lectura, 
-        // mostramos un enlace sutil o permitimos que el usuario toque la pantalla si ve blanco
-      }
-    }, 3500);
+    // Redirección automática si ya está instalado en el iPhone como PWA (Standalone)
+    if (window.navigator.standalone === true) {
+      window.location.replace("https://script.google.com/macros/s/AKfycbw1hEiNXWueZ2O79IkRkjy2jrmDY4cNcPlidOD-cjAYB2vN8N62j3qJIHi6kFhvCiKF/exec");
+    }
 
-    // Registro del Service Worker
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js');
